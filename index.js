@@ -75,9 +75,10 @@ function temperatureCtoF(tempC) {
  */
 function temperatureInF(temp, unit) {
   if (unit === 'F') {
-    return temp.toString() + unit;
+    return `${temp}${unit}`;
   } else if (unit === 'C') {
-    return Math.round(((temp * 9) / 5) + 32);
+    let cToF = Math.round(((temp * 9) / 5) + 32);
+    return `${cToF}F`
   }
 }
 
