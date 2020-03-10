@@ -74,10 +74,10 @@ function temperatureCtoF(tempC) {
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
  */
 function temperatureInF(temp, unit) {
-  if (unit === "F") {
-    return temp + unit;
-  } else {
-    return Math.round((temp * 9) / 5 + 32);
+  if (unit === 'F') {
+    return temp.toString() + unit;
+  } else if (unit === 'C') {
+    return Math.round(((temp * 9) / 5) + 32);
   }
 }
 
@@ -157,20 +157,15 @@ function isItAnApple(arrStrings) {
   
   let newarrStrings = arrStrings;
 
-  for (i = 0; i < newarrStrings.length; i++) 
+  for (let i = 0; i < newarrStrings.length; i++) 
   { 
-    if (newarrStrings[i] == "apple") { 
-
+    if (newarrStrings[i] ==='apple') { 
+      newarrStrings[i] = true;
+    } else {
+      newarrStrings[i] = false;
     }
   }
-  // arrStrings.forEach(element => {
-  //   if (element === "apple") {
-  //     element = "true";
-  //   } else {
-  //     element = "false";
-  //   }
-  //   return arrStrings;
-  // });
+  return newarrStrings;
 }
 
 /*
@@ -240,8 +235,10 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
  */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(carArray) {
+  let lastCarIndex = carArray.length - 1;
+  let lastCar = carArray[lastCarIndex];
+  return `This is a ${lastCar.car_make} ${lastCar.car_model}`
 }
 
 /**
@@ -253,8 +250,13 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
  */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(carArray) {
+  const newCarArray = [];
+  for (let e = 0; e < carArray.length; e++) { 
+    let caryear = carArray[e].car_year;
+    newCarArray.push(caryear);
+  }
+  return newCarArray;
 }
 
 /**
